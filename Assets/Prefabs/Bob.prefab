@@ -10,7 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8380779741179641394}
   - component: {fileID: 2743852474112119610}
-  - component: {fileID: 6978269029564714196}
+  - component: {fileID: 6090135883192428374}
+  - component: {fileID: 192040903833911353}
+  - component: {fileID: 4932860684470747988}
+  - component: {fileID: 4309039807626052482}
+  - component: {fileID: 7780618209506342498}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -85,7 +89,69 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6978269029564714196
+--- !u!61 &6090135883192428374
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629778195790384944}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.8}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.9, y: 0.8}
+    newSize: {x: 1.9, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.6}
+  m_EdgeRadius: 0
+--- !u!114 &192040903833911353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629778195790384944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6ae4985708abb47b19eac13f02ef79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4932860684470747988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629778195790384944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8574b3e5febfe8b4ba9e0c762416a34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4309039807626052482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629778195790384944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c4de03b32bff449a06bb739ed0a5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7780618209506342498
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
