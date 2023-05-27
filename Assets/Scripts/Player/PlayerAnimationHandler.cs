@@ -11,8 +11,23 @@ public class PlayerAnimationHandler : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
     }
 
-    public void ToggleIsWalking()
+    public void StartWalking()
     {
-        animator.SetBool("isWalking", !animator.GetBool("isWalking"));
+        animator.SetBool("isWalking", true);
+    }
+
+    public void StopWalking()
+    {
+        animator.SetBool("isWalking", false);
+    }
+
+    public void TriggerJump()
+    {
+        animator.SetTrigger("Jump");
+    }
+
+    public void TriggerCrouch()
+    {
+        animator.SetTrigger("Crouch");
     }
 }

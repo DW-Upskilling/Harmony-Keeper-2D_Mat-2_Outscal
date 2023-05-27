@@ -11,6 +11,8 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Animals
   - 
   - 
   - 
@@ -33,10 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Platform
+  - Border
   m_SortingLayers:
   - name: Default
     uniqueID: 0

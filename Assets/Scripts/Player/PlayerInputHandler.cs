@@ -22,38 +22,43 @@ public class PlayerInputHandler : MonoBehaviour
 
         if (horizontal != 0)
             MoveHorizontal(horizontal);
+        else
+            animationHandler.StopWalking();
+
         if (vertical != 0)
             MoveVertical(vertical);
     }
 
     void MoveHorizontal(float direction)
     {
-
+        animationHandler.StartWalking();
         Debug.Log("PlayerInputHandler::MoveHorizontal(): direction: " + direction);
 
         Transform transform = gameObject.GetComponent<Transform>();
         Vector3 position = transform.position;
         Vector3 eulerAngles = transform.eulerAngles;
 
+        position.x = position.x + direction * Time.deltaTime;
+
         if (direction > 0)
         {
-            position.x += 1 * Time.deltaTime;
             eulerAngles.y = 0;
         }
         else
         {
-            position.x -= 1 * Time.deltaTime;
             eulerAngles.y = 180;
         }
 
         transform.position = position;
         transform.eulerAngles = eulerAngles;
-
-        animationHandler.ToggleIsWalking();
     }
 
     void MoveVertical(float direction)
     {
+        if (direction > 0)
+        {
+            animationHandler.TriggerJump();
+        }
 
     }
 }
