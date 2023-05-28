@@ -5,14 +5,23 @@ using UnityEngine;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    public GameObject playerSprite;
+    public float maxJumpHeight = 0.8f;
+
     PlayerAnimationHandler animationHandler;
+
+    bool isGrounded;
 
     void Awake()
     {
-        animationHandler = gameObject.GetComponent<PlayerAnimationHandler>();
+        if (playerSprite == null)
+            throw new Exception("playerSprite");
 
+        animationHandler = playerSprite.GetComponent<PlayerAnimationHandler>();
         if (animationHandler == null)
             throw new Exception("animationHandler");
+
+        isGrounded = false;
     }
 
     public void Handle()
@@ -31,12 +40,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     void MoveHorizontal(float direction)
     {
-        animationHandler.StartWalking();
-        Debug.Log("PlayerInputHandler::MoveHorizontal(): direction: " + direction);
+        if (isGrounded)
+            animationHandler.StartWalking();
+        // Debug.Log("PlayerInputHandler::MoveHorizontal(): direction: " + direction);
 
         Transform transform = gameObject.GetComponent<Transform>();
         Vector3 position = transform.position;
-        Vector3 eulerAngles = transform.eulerAngles;
+        Vector3 eulerAngles = playerSprite.GetComponent<Transform>().eulerAngles;
 
         position.x = position.x + direction * Time.deltaTime;
 
@@ -50,15 +60,57 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         transform.position = position;
-        transform.eulerAngles = eulerAngles;
+        playerSprite.GetComponent<Transform>().eulerAngles = eulerAngles;
     }
 
     void MoveVertical(float direction)
     {
-        if (direction > 0)
+        Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        if (rigidbody2D == null)
+            throw new Exception("rigidbody2D");
+        if (direction > 0 && isGrounded)
         {
             animationHandler.TriggerJump();
+
+            float maxHeight = transform.position.y + maxJumpHeight;
+            float forceMagnitude = Mathf.Min(maxHeight - transform.position.y, direction);
+            Vector2 jumpForce = Vector2.up * forceMagnitude;
+
+            if ((transform.position.y + jumpForce.y) < maxHeight)
+            {
+                rigidbody2D.AddForce(jumpForce, ForceMode2D.Impulse);
+            }
+        }
+        if (direction < 0 && isGrounded)
+        {
+            animationHandler.TriggerCrouch();
         }
 
+    }
+
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        GameObject collisionObject = collision2D.gameObject;
+
+        BorderController borderController = collisionObject.GetComponent<BorderController>();
+        PlatformController platformController = collisionObject.GetComponent<PlatformController>();
+
+        if (borderController != null || platformController != null)
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision2D)
+    {
+        GameObject collisionObject = collision2D.gameObject;
+
+        BorderController borderController = collisionObject.GetComponent<BorderController>();
+        PlatformController platformController = collisionObject.GetComponent<PlatformController>();
+
+        if (borderController != null || platformController != null)
+        {
+            isGrounded = false;
+        }
     }
 }
