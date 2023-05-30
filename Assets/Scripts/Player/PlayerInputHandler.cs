@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerInputHandler : MonoBehaviour
 {
     public GameObject playerSprite;
-    public float maxJumpHeight = 0.8f;
+    // public float maxJumpHeight = 0.8f;
+    public float speed = 2f, jump = 10f;
 
     PlayerAnimationHandler animationHandler;
 
@@ -27,7 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void Handle()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float vertical = Input.GetAxisRaw("Vertical");
 
         if (horizontal != 0)
             MoveHorizontal(horizontal);
@@ -48,7 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
         Vector3 position = transform.position;
         Vector3 eulerAngles = playerSprite.GetComponent<Transform>().eulerAngles;
 
-        position.x = position.x + direction * Time.deltaTime;
+        position.x = position.x + direction * speed * Time.deltaTime;
 
         if (direction > 0)
         {
@@ -68,18 +69,12 @@ public class PlayerInputHandler : MonoBehaviour
         Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         if (rigidbody2D == null)
             throw new Exception("rigidbody2D");
+
         if (direction > 0 && isGrounded)
         {
             animationHandler.TriggerJump();
 
-            float maxHeight = transform.position.y + maxJumpHeight;
-            float forceMagnitude = Mathf.Min(maxHeight - transform.position.y, direction);
-            Vector2 jumpForce = Vector2.up * forceMagnitude;
-
-            if ((transform.position.y + jumpForce.y) < maxHeight)
-            {
-                rigidbody2D.AddForce(jumpForce, ForceMode2D.Impulse);
-            }
+            rigidbody2D.velocity = Vector2.up * jump * direction;
         }
         if (direction < 0 && isGrounded)
         {
@@ -88,7 +83,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision2D)
+    void OnCollisionStay2D(Collision2D collision2D)
     {
         GameObject collisionObject = collision2D.gameObject;
 

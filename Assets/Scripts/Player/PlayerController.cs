@@ -21,4 +21,16 @@ public class PlayerController : MonoBehaviour
         inputHandler.Handle();
     }
 
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        GameObject collisionObject = collision2D.gameObject;
+
+        AIController aIController = collisionObject.GetComponent<AIController>();
+
+        if (aIController != null)
+        {
+            Destroy(collisionObject);
+        }
+    }
+
 }

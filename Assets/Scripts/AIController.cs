@@ -7,11 +7,12 @@ public class AIController : MonoBehaviour
 
     public float speed = 1f;
     public float rayDistance = .1f;
+    public float intervalTime = 3f;
     public GameObject groundDetector;
     public LayerMask[] groundLayerMasks;
 
     Vector2 direction;
-    bool isGrounded;
+    bool isGrounded, isMoving;
     Animator animator;
 
     void Start()
@@ -21,14 +22,17 @@ public class AIController : MonoBehaviour
             throw new System.Exception("groundDetector");
         isGrounded = false;
 
-        Animator animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
         if (animator == null)
             throw new System.Exception("animator");
+
+        isMoving = false;
+        StartCoroutine(RandomiseMovement());
     }
 
     void Update()
     {
-        if (isGrounded)
+        if (isGrounded && isMoving)
         {
             MovementHandler();
         }
@@ -40,7 +44,7 @@ public class AIController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!isGrounded)
+        if (!isGrounded || !isMoving)
             return;
 
         Transform transform = gameObject.GetComponent<Transform>();
@@ -100,6 +104,12 @@ public class AIController : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        if (animator != null)
+            animator.Play("dead");
+    }
+
     void MovementHandler()
     {
         RaycastHit2D raycastHit2D = Physics2D.Raycast(groundDetector.GetComponent<Transform>().position, Vector2.down, rayDistance);
@@ -125,5 +135,19 @@ public class AIController : MonoBehaviour
 
         if (!isCollidingWithAllowedLayer)
             direction = (direction == Vector2.right) ? Vector2.left : Vector2.right;
+    }
+
+    IEnumerator RandomiseMovement()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(intervalTime);
+
+
+            if (Random.Range(0, 2) == 1)
+                isMoving = true;
+            else
+                isMoving = false;
+        }
     }
 }
