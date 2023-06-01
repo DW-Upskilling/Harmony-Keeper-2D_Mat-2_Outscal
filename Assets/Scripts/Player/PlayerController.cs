@@ -1,18 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    PlayerInputHandler inputHandler;
+
+    void Awake()
     {
-        
+        inputHandler = gameObject.GetComponent<PlayerInputHandler>();
+
+        if (inputHandler == null)
+            throw new Exception("inputHandler");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        inputHandler.Handle();
     }
+
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        GameObject collisionObject = collision2D.gameObject;
+
+        AIController aIController = collisionObject.GetComponent<AIController>();
+
+        if (aIController != null)
+        {
+            Destroy(collisionObject);
+        }
+    }
+
 }
