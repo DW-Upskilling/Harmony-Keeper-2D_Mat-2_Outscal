@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuSceneController : MonoBehaviour
 {
@@ -18,47 +19,69 @@ public class MainMenuSceneController : MonoBehaviour
         if (IntialContainer == null)
             throw new System.Exception("intialIntialContainerText");
 
-        foreach (Button button in LevelButtons)
-        {
-            ButtonController buttonController = button.GetComponent<ButtonController>();
-            if (buttonController == null)
-                continue;
+        InitialLaunch = PlayerPrefs.GetInt("InitialLaunch", 0);
+        ToggleContainers();
 
-            int buttonStatus = PlayerPrefs.GetInt(button.name, 0);
-            if (buttonStatus == 0)
-                buttonController.ButtonStatus = ButtonStatus.Locked;
-            else if (buttonStatus == 1)
-                buttonController.ButtonStatus = ButtonStatus.Unlocked;
-            else if (buttonStatus == 2)
-                buttonController.ButtonStatus = ButtonStatus.Active;
+    }
 
-        }
+    void Start()
+    {
+        if (LevelButtons != null)
+            foreach (Button button in LevelButtons)
+            {
+                ButtonController buttonController = button.GetComponent<ButtonController>();
+                if (buttonController == null)
+                    continue;
 
-        InitialLaunch = PlayerPrefs.GetInt("InitialLaunch", 1);
-        if (InitialLaunch != 1)
-        {
-            ToggleContainers();
-        }
+                int buttonStatus = PlayerPrefs.GetInt(button.name, 0);
+                if (buttonStatus == 0)
+                    buttonController.ButtonStatus = ButtonStatus.Locked;
+                else if (buttonStatus == 1)
+                {
+                    buttonController.ButtonStatus = ButtonStatus.Unlocked;
+                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
+                }
+                else if (buttonStatus == 2)
+                {
+                    buttonController.ButtonStatus = ButtonStatus.Active;
+                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
+                }
 
+            }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && InitialLaunch == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && InitialLaunch == 0)
         {
             TextController textController = IntialContainer.GetComponentInChildren<TextController>();
             if (textController != null)
             {
-                ToggleContainers();
+                PlayerPrefs.SetInt("InitialLaunch", 1);
             }
+
+            ToggleContainers();
         }
     }
 
     void ToggleContainers()
     {
-        IntialContainer.SetActive(false);
-        MenuContainer.SetActive(true);
+        if (InitialLaunch == 0)
+        {
+            IntialContainer.SetActive(true);
+            MenuContainer.SetActive(false);
+        }
+        else
+        {
+            IntialContainer.SetActive(false);
+            MenuContainer.SetActive(true);
+        }
 
-        // PlayerPrefs.SetInt("InitialLaunch", 0);
+
+    }
+
+    void LevelSceneLoader(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

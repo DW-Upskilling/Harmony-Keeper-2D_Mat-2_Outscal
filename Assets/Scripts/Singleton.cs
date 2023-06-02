@@ -18,7 +18,6 @@ public class Singleton : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // Setting Initial Level as Unlocked
-        PlayerPrefs.SetInt("Level 1", 2);
-        PlayerPrefs.SetInt("Level 2", 1);
+        PlayerPrefs.SetInt("Level 1", 1);
     }
 }

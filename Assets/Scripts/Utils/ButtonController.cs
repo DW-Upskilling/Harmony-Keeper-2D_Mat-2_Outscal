@@ -22,15 +22,18 @@ public class ButtonController : MonoBehaviour
         if (button == null)
             throw new System.Exception("button");
 
+        button.onClick.AddListener(buttonClickListener);
+
         buttonImage = gameObject.GetComponent<Image>();
         if (buttonImage == null)
-            throw new System.Exception("button");
-
-        button.onClick.AddListener(buttonClickListener);
+            buttonImage = gameObject.AddComponent<Image>();
     }
 
     void setButtonStatus(ButtonStatus _buttonStatus)
     {
+        if (buttonImage == null)
+            return;
+
         switch (_buttonStatus)
         {
             case ButtonStatus.Active:
@@ -48,7 +51,6 @@ public class ButtonController : MonoBehaviour
                 break;
         }
     }
-
 
     void buttonClickListener()
     {
