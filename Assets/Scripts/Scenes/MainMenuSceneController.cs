@@ -24,32 +24,6 @@ public class MainMenuSceneController : MonoBehaviour
 
     }
 
-    void Start()
-    {
-        if (LevelButtons != null)
-            foreach (Button button in LevelButtons)
-            {
-                ButtonController buttonController = button.GetComponent<ButtonController>();
-                if (buttonController == null)
-                    continue;
-
-                int buttonStatus = PlayerPrefs.GetInt(button.name, 0);
-                if (buttonStatus == 0)
-                    buttonController.ButtonStatus = ButtonStatus.Locked;
-                else if (buttonStatus == 1)
-                {
-                    buttonController.ButtonStatus = ButtonStatus.Unlocked;
-                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
-                }
-                else if (buttonStatus == 2)
-                {
-                    buttonController.ButtonStatus = ButtonStatus.Active;
-                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
-                }
-
-            }
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && InitialLaunch == 0)
@@ -57,9 +31,9 @@ public class MainMenuSceneController : MonoBehaviour
             TextController textController = IntialContainer.GetComponentInChildren<TextController>();
             if (textController != null)
             {
-                PlayerPrefs.SetInt("InitialLaunch", 1);
+                InitialLaunch = 1;
+                // PlayerPrefs.SetInt("InitialLaunch", InitialLaunch);
             }
-
             ToggleContainers();
         }
     }
@@ -77,7 +51,31 @@ public class MainMenuSceneController : MonoBehaviour
             MenuContainer.SetActive(true);
         }
 
+        if (LevelButtons != null)
+            foreach (Button button in LevelButtons)
+            {
+                ButtonController buttonController = button.GetComponent<ButtonController>();
+                if (buttonController == null)
+                {
+                    button.enabled = false;
+                    continue;
+                }
 
+                int buttonStatus = PlayerPrefs.GetInt(button.name, 0);
+                if (buttonStatus == 0)
+                    buttonController.ButtonStatus = ButtonStatus.Locked;
+                else if (buttonStatus == 1)
+                {
+                    buttonController.ButtonStatus = ButtonStatus.Unlocked;
+                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
+                }
+                else if (buttonStatus == 2)
+                {
+                    buttonController.ButtonStatus = ButtonStatus.Active;
+                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
+                }
+
+            }
     }
 
     void LevelSceneLoader(string name)

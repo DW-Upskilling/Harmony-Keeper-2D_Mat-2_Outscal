@@ -10,14 +10,21 @@ public class GamePauseController : MonoBehaviour
 
     void Awake()
     {
+        if (ResumeButton == null)
+            throw new System.Exception("ResumeButton");
         ResumeButton.onClick.AddListener(Resume);
+
+        if (RestartButton == null)
+            throw new System.Exception("RestartButton");
         RestartButton.onClick.AddListener(RestartLevel);
+
+        if (MainMenuButton == null)
+            throw new System.Exception("MainMenuButton");
         MainMenuButton.onClick.AddListener(ExitToMainMenu);
     }
 
     void Resume()
     {
-        Debug.Log("Resume");
         LevelSceneController levelSceneController = gameObject.GetComponentInParent<LevelSceneController>();
         if (levelSceneController != null)
             levelSceneController.TogglePauseScreen();

@@ -32,7 +32,7 @@ public class LevelCompleteSceneController : MonoBehaviour
 
     void NextLevel()
     {
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene("Level 1");
     }
 
     void ExitToMainMenu()
