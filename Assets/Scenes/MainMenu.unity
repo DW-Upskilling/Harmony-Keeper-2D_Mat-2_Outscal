@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 277453953}
   - component: {fileID: 277453952}
   m_Layer: 5
-  m_Name: Level 2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 449105419}
   - component: {fileID: 449105418}
   m_Layer: 5
-  m_Name: Level 5
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 716487015}
   - component: {fileID: 716487014}
   m_Layer: 5
-  m_Name: Level 3
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 820212240}
   - component: {fileID: 820212239}
   m_Layer: 5
-  m_Name: Level 4
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1536,7 +1536,7 @@ GameObject:
   - component: {fileID: 1576763232}
   - component: {fileID: 1576763231}
   m_Layer: 5
-  m_Name: Level 6
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,6 +2026,30 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 2b6e306f144fd2047ad36490140f8b85, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 55
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 52
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 832aa39d4fbe053428a67083bb091a1a, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 60
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
   backgroundMusicName: BackgroundMusic
 --- !u!114 &1721234781
 MonoBehaviour:
@@ -2163,7 +2187,7 @@ GameObject:
   - component: {fileID: 1832810570}
   - component: {fileID: 1832810569}
   m_Layer: 5
-  m_Name: Level 1
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

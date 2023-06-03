@@ -14,14 +14,16 @@ public class MainMenuSceneController : MonoBehaviour
 
     private int InitialLaunch;
 
-    void Awake()
+    void Start()
     {
         if (IntialContainer == null)
             throw new System.Exception("intialIntialContainerText");
 
-        InitialLaunch = PlayerPrefs.GetInt("InitialLaunch", 0);
+        Singleton singleton = Singleton.Instance;
+        if (singleton == null)
+            return;
+        InitialLaunch = singleton.InitialLaunch;
         ToggleContainers();
-
     }
 
     void Update()
@@ -32,7 +34,7 @@ public class MainMenuSceneController : MonoBehaviour
             if (textController != null)
             {
                 InitialLaunch = 1;
-                // PlayerPrefs.SetInt("InitialLaunch", InitialLaunch);
+                PlayerPrefs.SetInt("InitialLaunch", InitialLaunch);
             }
             ToggleContainers();
         }
@@ -80,6 +82,12 @@ public class MainMenuSceneController : MonoBehaviour
 
     void LevelSceneLoader(string name)
     {
-        SceneManager.LoadScene(name);
+        Singleton singleton = Singleton.Instance;
+        if (singleton != null)
+        {
+            singleton.CurrentLevel = int.Parse(name);
+        }
+
+        SceneManager.LoadScene("Level " + name);
     }
 }

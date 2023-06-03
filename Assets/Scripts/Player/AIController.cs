@@ -10,6 +10,7 @@ public class AIController : MonoBehaviour
     public float intervalTime = 3f;
     public GameObject groundDetector;
     public LayerMask[] groundLayerMasks;
+    public Sprite finalSprite;
 
     Vector2 direction;
     bool isGrounded, isMoving;
@@ -104,10 +105,40 @@ public class AIController : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    public void Kill()
     {
         if (animator != null)
             animator.Play("dead");
+
+        StartCoroutine(WaitForAnimation());
+    }
+
+    IEnumerator WaitForAnimation()
+    {
+        Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        if (rigidbody2D != null)
+            Destroy(rigidbody2D);
+
+        BoxCollider2D boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        if (boxCollider2D != null)
+            Destroy(boxCollider2D);
+
+        if (animator != null)
+        {
+            while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+                yield return null;
+            }
+            Destroy(animator);
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.Play("Death");
+            }
+        }
+
+        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && finalSprite != null)
+            spriteRenderer.sprite = finalSprite;
     }
 
     void MovementHandler()

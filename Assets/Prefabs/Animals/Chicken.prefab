@@ -141,6 +141,7 @@ MonoBehaviour:
     m_Bits: 64
   - serializedVersion: 2
     m_Bits: 128
+  finalSprite: {fileID: 21300020, guid: 1577f106ceccd624895112215c69960a, type: 3}
 --- !u!61 &7715283229611166172
 BoxCollider2D:
   m_ObjectHideFlags: 0

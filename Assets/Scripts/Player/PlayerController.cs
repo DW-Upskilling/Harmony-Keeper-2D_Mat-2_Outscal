@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if (aIController != null)
         {
-            Destroy(collisionObject);
+            aIController.Kill();
         }
     }
 
