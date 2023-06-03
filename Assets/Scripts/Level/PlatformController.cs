@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    public Sprite sprite;
+    public Sprite sprite, OnTouchSprite;
+    private bool flagged;
 
     SpriteRenderer spriteRenderer;
 
@@ -19,6 +20,26 @@ public class PlatformController : MonoBehaviour
                 throw new System.Exception("sprite");
             else
                 sprite = spriteRenderer.sprite;
+
+        flagged = false;
+    }
+
+    public void SpriteChange()
+    {
+        if (flagged)
+            return;
+        flagged = true;
+
+        if (OnTouchSprite == null)
+            return;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.Play("Shoot");
+        }
+
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = OnTouchSprite;
     }
 
     void Start()

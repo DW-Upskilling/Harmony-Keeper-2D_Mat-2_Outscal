@@ -9,6 +9,7 @@ public class LevelCompleteSceneController : MonoBehaviour
 {
 
     public Button restartButton, nextButton, mainMenuButton;
+    public TextMeshProUGUI heading, score;
 
     void Awake()
     {
@@ -23,6 +24,29 @@ public class LevelCompleteSceneController : MonoBehaviour
         if (mainMenuButton == null)
             throw new System.Exception("mainMenuButton");
         mainMenuButton.onClick.AddListener(ExitToMainMenu);
+
+        Singleton singleton = Singleton.Instance;
+        if (singleton != null)
+        {
+            if (heading != null)
+            {
+                heading.text = $"Level {singleton.CurrentLevel} Complete";
+            }
+        }
+    }
+
+    void Start()
+    {
+        Singleton singleton = Singleton.Instance;
+        if (singleton != null)
+        {
+            singleton.CurrentLevelComplete();
+
+            if (heading != null)
+            {
+                heading.text = $"Level {singleton.CurrentLevel} Complete";
+            }
+        }
     }
 
     void RestartLevel()

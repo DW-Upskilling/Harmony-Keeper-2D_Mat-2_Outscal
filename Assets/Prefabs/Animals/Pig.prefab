@@ -98,18 +98,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6009257404483345746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ba3826e44ea1540afc0a3e9b9af413, type: 3}
+  m_Script: {fileID: 11500000, guid: 4112f67db3021ea4eb0746e0fe37632b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
   rayDistance: 0.1
+  intervalTime: 3
   groundDetector: {fileID: 6009257404829213322}
   groundLayerMasks:
   - serializedVersion: 2
     m_Bits: 64
   - serializedVersion: 2
     m_Bits: 128
-  animator: {fileID: 6009257404483345744}
+  finalSprite: {fileID: 21300016, guid: 0206dfbd82753ea42bff2c1b0a56966d, type: 3}
 --- !u!61 &6009257404483345759
 BoxCollider2D:
   m_ObjectHideFlags: 0

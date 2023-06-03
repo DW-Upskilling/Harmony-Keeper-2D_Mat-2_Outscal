@@ -7,7 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public GameObject playerSprite;
     // public float maxJumpHeight = 0.8f;
-    public float speed = 2f, jump = 10f;
+    public float speed = 2f, jump = 1f;
 
     PlayerAnimationHandler animationHandler;
 
@@ -93,6 +93,11 @@ public class PlayerInputHandler : MonoBehaviour
         if (borderController != null || platformController != null)
         {
             isGrounded = true;
+        }
+
+        if (platformController != null)
+        {
+            platformController.SpriteChange();
         }
     }
 

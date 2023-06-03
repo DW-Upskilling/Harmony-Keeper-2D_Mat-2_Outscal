@@ -6,16 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    public GameObject platforms, animals;
 
-    void Awake()
+    public void GoalReached()
     {
-        StartCoroutine(LoadLevelComplete());
-    }
-
-    IEnumerator LoadLevelComplete()
-    {
-        yield return new WaitForSeconds(10);
-
         SceneManager.LoadScene("LevelComplete");
     }
 

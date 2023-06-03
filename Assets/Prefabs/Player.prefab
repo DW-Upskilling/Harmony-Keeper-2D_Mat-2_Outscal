@@ -180,7 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 2616799879858418158}
-  maxJumpHeight: 0.8
+  speed: 2
+  jump: 7
 --- !u!50 &853844434856769980
 Rigidbody2D:
   serializedVersion: 4
