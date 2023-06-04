@@ -76,6 +76,11 @@ public class MainMenuSceneController : MonoBehaviour
                     buttonController.ButtonStatus = ButtonStatus.Active;
                     button.onClick.AddListener(() => LevelSceneLoader(button.name));
                 }
+                else if (buttonStatus == 3)
+                {
+                    buttonController.ButtonStatus = ButtonStatus.Done;
+                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
+                }
 
             }
     }

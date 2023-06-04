@@ -13,8 +13,9 @@ public class Singleton : MonoBehaviour
     private int currentLevel = 0;
     public int CurrentLevel { set { currentLevel = value; } get { return currentLevel; } }
 
-    private float completionPercentage = 0f;
+    private float completionPercentage = 0f, platformsCoveredPercentage = 0f;
     public float CompletionPercentage { get { return completionPercentage; } }
+    public float LevelCompletionPercentage { get { return platformsCoveredPercentage; } }
 
     void Awake()
     {
@@ -37,8 +38,11 @@ public class Singleton : MonoBehaviour
 
     public void CurrentLevelComplete()
     {
-        PlayerPrefs.SetInt(currentLevel.ToString(), 2);
-        PlayerPrefs.SetInt((currentLevel + 1).ToString(), 1);
+        PlayerPrefs.SetInt(currentLevel.ToString(), completionPercentage >= 100 ? 3 : 2);
+
+        // Unlock only if next level is not yet unlocked
+        if (PlayerPrefs.GetInt((currentLevel + 1).ToString(), 0) == 0)
+            PlayerPrefs.SetInt((currentLevel + 1).ToString(), 1);
     }
 
     public void CompletionCalculator(GameObject platforms, GameObject animals)
@@ -60,9 +64,7 @@ public class Singleton : MonoBehaviour
                 platformsCovered++;
         }
         float temp2 = totalPlatforms > 0 ? ((totalPlatforms - platformsCovered) / totalPlatforms) * 100 : 100;
-
-        Debug.Log("Animals: " + temp1);
-        Debug.Log("Platform: " + temp2);
+        platformsCoveredPercentage = temp2;
 
         completionPercentage = (temp1 + temp2) / 2;
     }
