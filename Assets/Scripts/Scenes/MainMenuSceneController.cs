@@ -34,7 +34,12 @@ public class MainMenuSceneController : MonoBehaviour
             if (textController != null)
             {
                 InitialLaunch = 1;
+
                 PlayerPrefs.SetInt("InitialLaunch", InitialLaunch);
+
+                Singleton singleton = Singleton.Instance;
+                if (singleton != null)
+                    singleton.InitialLaunch = InitialLaunch;
             }
             ToggleContainers();
         }

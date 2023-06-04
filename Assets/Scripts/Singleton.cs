@@ -8,7 +8,7 @@ public class Singleton : MonoBehaviour
     public static Singleton Instance { get { return instance; } }
 
     private int initialLaunch = 0;
-    public int InitialLaunch { get { return initialLaunch; } }
+    public int InitialLaunch { get { return initialLaunch; } set { initialLaunch = 1; } }
 
     private int currentLevel = 0;
     public int CurrentLevel { set { currentLevel = value; } get { return currentLevel; } }
