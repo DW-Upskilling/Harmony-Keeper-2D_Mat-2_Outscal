@@ -11,6 +11,7 @@ A slime character embarks on a journey to cross dimensions and reach its home. T
 1. The player can move in two directions: left (⬅️) and right (➡️).
 2. Vertical jumping is possible by pressing the jump button (⬆️).
 3. The player can crouch down by pressing the crouch button (⬇️).
+4. Player can hold to the platforms for performing multiple jumps or climb.
 
 > Animals (Cow, Pig, Chicken)
 
@@ -30,6 +31,6 @@ A slime character embarks on a journey to cross dimensions and reach its home. T
 
 #
 
-Demo: [YouTube Link](https://youtu.be/b7XjwDTQsTY)
+Demo: [YouTube Link](https://youtu.be/vfE9hKmej6k)
 
-Play: [Itch.io](https://developerswork.itch.io/coop-snake-2d)
+Play: [Itch.io](https://developerswork.itch.io/harmony-keeper-2d)

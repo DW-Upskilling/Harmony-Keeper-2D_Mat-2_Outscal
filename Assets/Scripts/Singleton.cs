@@ -27,6 +27,10 @@ public class Singleton : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // Only for Development
+        // Removed during Production
+        PlayerPrefs.DeleteAll();
+
         initialLaunch = PlayerPrefs.GetInt("InitialLaunch", 0);
 
         // Setting Initial Level as Unlocked
