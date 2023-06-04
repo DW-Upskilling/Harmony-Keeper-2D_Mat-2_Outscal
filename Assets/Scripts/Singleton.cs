@@ -29,7 +29,7 @@ public class Singleton : MonoBehaviour
 
         // Only for Development
         // Removed during Production
-        PlayerPrefs.DeleteAll();
+        // PlayerPrefs.DeleteAll();
 
         initialLaunch = PlayerPrefs.GetInt("InitialLaunch", 0);
 
