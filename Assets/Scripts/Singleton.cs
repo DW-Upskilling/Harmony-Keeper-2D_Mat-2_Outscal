@@ -13,6 +13,9 @@ public class Singleton : MonoBehaviour
     private int currentLevel = 0;
     public int CurrentLevel { set { currentLevel = value; } get { return currentLevel; } }
 
+    private float completionPercentage = 0f;
+    public float CompletionPercentage { get { return completionPercentage; } }
+
     void Awake()
     {
         if (instance != null)
@@ -36,6 +39,32 @@ public class Singleton : MonoBehaviour
     {
         PlayerPrefs.SetInt(currentLevel.ToString(), 2);
         PlayerPrefs.SetInt((currentLevel + 1).ToString(), 1);
+    }
+
+    public void CompletionCalculator(GameObject platforms, GameObject animals)
+    {
+        // Calculate the number of alive animals by counting the number of Rigidbody2D components attached to them in the children of the 'animals' object
+        float totalAnimals = animals.GetComponentsInChildren<AIController>().Length;
+        float animalsAlive = animals.GetComponentsInChildren<Rigidbody2D>().Length;
+        float temp1 = totalAnimals > 0 ? (animalsAlive / totalAnimals) * 100 : 100;
+
+        // Count the number of platforms covered by the player.
+        float platformsCovered = 0f;
+        // Retrieve all PlatformController components in the parent hierarchy of the 'platforms' object.
+        PlatformController[] platformControllers = platforms.GetComponentsInChildren<PlatformController>();
+        float totalPlatforms = platformControllers.Length;
+        foreach (PlatformController platformController in platformControllers)
+        {
+            // Check if the platform is not flagged (not yet covered).
+            if (!platformController.Flagged)
+                platformsCovered++;
+        }
+        float temp2 = totalPlatforms > 0 ? ((totalPlatforms - platformsCovered) / totalPlatforms) * 100 : 100;
+
+        Debug.Log("Animals: " + temp1);
+        Debug.Log("Platform: " + temp2);
+
+        completionPercentage = (temp1 + temp2) / 2;
     }
 
 

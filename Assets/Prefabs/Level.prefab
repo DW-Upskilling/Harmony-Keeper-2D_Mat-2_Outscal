@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d5b963865544f46a4167688521f829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platforms: {fileID: 5317588445715548441}
+  animals: {fileID: 601371485940079935}
 --- !u!114 &3064788812122272831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +122,6 @@ MonoBehaviour:
   PauseScreen: {fileID: 3402546695485306112}
   GameObjectsToPause: []
   GameObjectsOnPauseScreen: []
-  platforms: {fileID: 5317588445715548441}
-  animals: {fileID: 601371485940079935}
 --- !u!81 &8842178605337781129
 AudioListener:
   m_ObjectHideFlags: 0
