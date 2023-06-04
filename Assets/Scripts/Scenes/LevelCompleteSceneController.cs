@@ -34,6 +34,11 @@ public class LevelCompleteSceneController : MonoBehaviour
         {
             singleton.CurrentLevelComplete();
 
+            if (singleton.CurrentLevel >= 6)
+            {
+                nextButton.interactable = false;
+            }
+
             if (heading != null)
             {
                 heading.text = $"Level {singleton.CurrentLevel} Complete";
@@ -49,12 +54,25 @@ public class LevelCompleteSceneController : MonoBehaviour
 
     void RestartLevel()
     {
-        SceneManager.LoadScene("Level 1");
+        Singleton singleton = Singleton.Instance;
+        if (singleton != null)
+        {
+            SceneManager.LoadScene("Level " + singleton.CurrentLevel);
+        }
+        else
+            SceneManager.LoadScene("MainMenu");
     }
 
     void NextLevel()
     {
-        SceneManager.LoadScene("Level 1");
+        Singleton singleton = Singleton.Instance;
+        if (singleton != null && singleton.CurrentLevel < 6)
+        {
+            singleton.CurrentLevel += 1;
+            SceneManager.LoadScene("Level " + singleton.CurrentLevel);
+        }
+        else
+            SceneManager.LoadScene("MainMenu");
     }
 
     void ExitToMainMenu()

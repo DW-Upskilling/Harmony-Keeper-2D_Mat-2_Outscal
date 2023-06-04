@@ -36,18 +36,25 @@ public class ButtonController : MonoBehaviour
 
         switch (_buttonStatus)
         {
-            case ButtonStatus.Active:
-                buttonImage.color = Color.cyan;
-                break;
             case ButtonStatus.Inactive:
                 gameObject.SetActive(false);
                 break;
-            case ButtonStatus.Unlocked:
-                buttonImage.color = Color.green;
+            case ButtonStatus.Active:
+                gameObject.SetActive(true);
+                buttonImage.color = Color.cyan;
                 break;
             case ButtonStatus.Locked:
-                buttonImage.color = Color.grey;
+                gameObject.SetActive(true);
                 button.interactable = false;
+                buttonImage.color = Color.grey;
+                break;
+            case ButtonStatus.Unlocked:
+                gameObject.SetActive(true);
+                buttonImage.color = Color.green;
+                break;
+            case ButtonStatus.Done:
+                gameObject.SetActive(true);
+                buttonImage.color = Color.blue;
                 break;
         }
     }

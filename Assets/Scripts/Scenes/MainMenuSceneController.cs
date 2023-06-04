@@ -34,7 +34,12 @@ public class MainMenuSceneController : MonoBehaviour
             if (textController != null)
             {
                 InitialLaunch = 1;
+
                 PlayerPrefs.SetInt("InitialLaunch", InitialLaunch);
+
+                Singleton singleton = Singleton.Instance;
+                if (singleton != null)
+                    singleton.InitialLaunch = InitialLaunch;
             }
             ToggleContainers();
         }
@@ -74,6 +79,11 @@ public class MainMenuSceneController : MonoBehaviour
                 else if (buttonStatus == 2)
                 {
                     buttonController.ButtonStatus = ButtonStatus.Active;
+                    button.onClick.AddListener(() => LevelSceneLoader(button.name));
+                }
+                else if (buttonStatus == 3)
+                {
+                    buttonController.ButtonStatus = ButtonStatus.Done;
                     button.onClick.AddListener(() => LevelSceneLoader(button.name));
                 }
 

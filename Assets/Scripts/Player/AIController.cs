@@ -178,7 +178,6 @@ public class AIController : MonoBehaviour
         {
             yield return new WaitForSeconds(intervalTime);
 
-
             if (Random.Range(0, 2) == 1)
                 isMoving = true;
             else
