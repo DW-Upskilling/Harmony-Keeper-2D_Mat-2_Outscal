@@ -6,6 +6,7 @@ public class PlatformController : MonoBehaviour
 {
     public Sprite sprite, OnTouchSprite;
     private bool flagged;
+    public bool Flagged { get { return flagged; } }
 
     SpriteRenderer spriteRenderer;
 
@@ -40,6 +41,10 @@ public class PlatformController : MonoBehaviour
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = OnTouchSprite;
+
+        LevelController levelController = gameObject.GetComponentInParent<LevelController>();
+        if (levelController != null)
+            levelController.UpdateScore();
     }
 
     void Start()

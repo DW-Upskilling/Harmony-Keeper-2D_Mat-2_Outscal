@@ -139,6 +139,10 @@ public class AIController : MonoBehaviour
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null && finalSprite != null)
             spriteRenderer.sprite = finalSprite;
+
+        LevelController levelController = gameObject.GetComponentInParent<LevelController>();
+        if (levelController != null)
+            levelController.UpdateScore();
     }
 
     void MovementHandler()

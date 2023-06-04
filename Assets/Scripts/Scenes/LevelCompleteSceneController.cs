@@ -25,14 +25,6 @@ public class LevelCompleteSceneController : MonoBehaviour
             throw new System.Exception("mainMenuButton");
         mainMenuButton.onClick.AddListener(ExitToMainMenu);
 
-        Singleton singleton = Singleton.Instance;
-        if (singleton != null)
-        {
-            if (heading != null)
-            {
-                heading.text = $"Level {singleton.CurrentLevel} Complete";
-            }
-        }
     }
 
     void Start()
@@ -46,6 +38,12 @@ public class LevelCompleteSceneController : MonoBehaviour
             {
                 heading.text = $"Level {singleton.CurrentLevel} Complete";
             }
+
+            if (score != null)
+            {
+                score.text = $"Completed: {Mathf.Round(singleton.CompletionPercentage)}%";
+            }
+
         }
     }
 
