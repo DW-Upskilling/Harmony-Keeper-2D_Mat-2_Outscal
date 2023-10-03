@@ -88,17 +88,12 @@ public class PlayerInputHandler : MonoBehaviour
         GameObject collisionObject = collision2D.gameObject;
 
         BorderController borderController = collisionObject.GetComponent<BorderController>();
-        PlatformController platformController = collisionObject.GetComponent<PlatformController>();
+        // PlatformController platformController = collisionObject.GetComponent<PlatformController>();
 
-        if (borderController != null || platformController != null)
+        /*if (borderController != null || platformController != null)
         {
             isGrounded = true;
-        }
-
-        if (platformController != null)
-        {
-            platformController.SpriteChange();
-        }
+        }*/
     }
 
     void OnCollisionExit2D(Collision2D collision2D)
@@ -106,11 +101,11 @@ public class PlayerInputHandler : MonoBehaviour
         GameObject collisionObject = collision2D.gameObject;
 
         BorderController borderController = collisionObject.GetComponent<BorderController>();
-        PlatformController platformController = collisionObject.GetComponent<PlatformController>();
-
+        // PlatformController platformController = collisionObject.GetComponent<PlatformController>();
+        /*
         if (borderController != null || platformController != null)
         {
             isGrounded = false;
-        }
+        }*/
     }
 }

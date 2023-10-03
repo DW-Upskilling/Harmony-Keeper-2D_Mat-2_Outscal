@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Outscal.UnityFundamentals.Mat2.Managers.Audio;
 public class AIController : MonoBehaviour
 {
 
@@ -140,9 +141,9 @@ public class AIController : MonoBehaviour
         if (spriteRenderer != null && finalSprite != null)
             spriteRenderer.sprite = finalSprite;
 
-        LevelController levelController = gameObject.GetComponentInParent<LevelController>();
+        /*LevelController levelController = gameObject.GetComponentInParent<LevelController>();
         if (levelController != null)
-            levelController.UpdateScore();
+            levelController.UpdateScore();*/
     }
 
     void MovementHandler()

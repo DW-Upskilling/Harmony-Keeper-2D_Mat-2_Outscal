@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6009257404483345756}
   - component: {fileID: 6009257404483345757}
-  - component: {fileID: 6009257404483345758}
   - component: {fileID: 6009257404483345759}
   - component: {fileID: 6009257404483345744}
   - component: {fileID: 6009257404483345745}
+  - component: {fileID: 6390969727385437919}
+  - component: {fileID: 2138340582945586557}
   m_Layer: 30
   m_Name: Pig
   m_TagString: Untagged
@@ -89,28 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6009257404483345758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6009257404483345746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4112f67db3021ea4eb0746e0fe37632b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  rayDistance: 0.1
-  intervalTime: 3
-  groundDetector: {fileID: 6009257404829213322}
-  groundLayerMasks:
-  - serializedVersion: 2
-    m_Bits: 64
-  - serializedVersion: 2
-    m_Bits: 128
-  finalSprite: {fileID: 21300016, guid: 0206dfbd82753ea42bff2c1b0a56966d, type: 3}
 --- !u!61 &6009257404483345759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,6 +158,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6390969727385437919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009257404483345746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c91e6ea88d6c96442ad9bf73cd04c259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalScriptableObject: {fileID: 11400000, guid: 8c1fb9370d6250646b5ce8a90356cbd2, type: 2}
+--- !u!114 &2138340582945586557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6009257404483345746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ca49432fc9a5a46bd142d75495cd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundDetector: {fileID: 6009257404829213321}
 --- !u!1 &6009257404829213322
 GameObject:
   m_ObjectHideFlags: 0

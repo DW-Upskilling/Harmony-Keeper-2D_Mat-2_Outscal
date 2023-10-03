@@ -41,10 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 121858587730554419}
   - component: {fileID: 9097109189581727051}
-  - component: {fileID: 6136500257348572623}
   - component: {fileID: 7715283229611166172}
   - component: {fileID: 7688974136232996398}
   - component: {fileID: 8781273997595088132}
+  - component: {fileID: 8942592857288079100}
+  - component: {fileID: 7968994797403261119}
   m_Layer: 30
   m_Name: Chicken
   m_TagString: Untagged
@@ -120,28 +121,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6136500257348572623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496528620417570176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4112f67db3021ea4eb0746e0fe37632b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  rayDistance: 0.1
-  intervalTime: 3
-  groundDetector: {fileID: 5173117750366235719}
-  groundLayerMasks:
-  - serializedVersion: 2
-    m_Bits: 64
-  - serializedVersion: 2
-    m_Bits: 128
-  finalSprite: {fileID: 21300020, guid: 1577f106ceccd624895112215c69960a, type: 3}
 --- !u!61 &7715283229611166172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -210,3 +189,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8942592857288079100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496528620417570176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c91e6ea88d6c96442ad9bf73cd04c259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalScriptableObject: {fileID: 11400000, guid: 90c84ed292b3db44fb9eca8d7d665c6a, type: 2}
+--- !u!114 &7968994797403261119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496528620417570176}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ca49432fc9a5a46bd142d75495cd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundDetector: {fileID: 6901572018580073228}

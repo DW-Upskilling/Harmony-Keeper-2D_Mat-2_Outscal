@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Outscal.UnityFundamentals.Mat2.Managers.Audio;
 public class GoalController : MonoBehaviour
 {
 

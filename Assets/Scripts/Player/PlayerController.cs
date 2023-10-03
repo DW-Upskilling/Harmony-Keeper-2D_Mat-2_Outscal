@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+using Outscal.UnityFundamentals.Mat2.Entities.Player;
+
+public class PlayerController : MonoBehaviour, IPlayer
 {
     private PlayerInputHandler inputHandler; // Reference to the PlayerInputHandler component
 
