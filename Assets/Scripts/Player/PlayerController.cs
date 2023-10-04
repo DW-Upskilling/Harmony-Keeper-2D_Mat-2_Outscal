@@ -26,11 +26,12 @@ public class PlayerController : MonoBehaviour, IPlayer
     {
         GameObject collisionObject = collision2D.gameObject; // Get the game object collided with
 
-        AIController aIController = collisionObject.GetComponent<AIController>(); // Get the AIController component from the collided game object
-
+        // AIController aIController = collisionObject.GetComponent<AIController>(); // Get the AIController component from the collided game object
+        /*
         if (aIController != null)
         {
             aIController.Kill(); // Call the Kill method in the AIController to eliminate the AI
         }
+        */
     }
 }

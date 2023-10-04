@@ -1,7 +1,5 @@
-﻿using System;
-
-using Outscal.UnityFundamentals.Mat2.GenericClasses.Observer;
-using Outscal.UnityFundamentals.Mat2.Entities.Platform;
+﻿using Outscal.UnityFundamentals.Mat2.GenericClasses.Observer;
+using Outscal.UnityFundamentals.Mat2.Level.Platform;
 
 namespace Outscal.UnityFundamentals.Mat2.Events
 {

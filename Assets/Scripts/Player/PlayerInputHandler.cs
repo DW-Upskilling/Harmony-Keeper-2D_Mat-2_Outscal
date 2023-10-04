@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Outscal.UnityFundamentals.Mat2.Level;
+
 public class PlayerInputHandler : MonoBehaviour
 {
     public GameObject playerSprite;
@@ -87,25 +89,19 @@ public class PlayerInputHandler : MonoBehaviour
     {
         GameObject collisionObject = collision2D.gameObject;
 
-        BorderController borderController = collisionObject.GetComponent<BorderController>();
-        // PlatformController platformController = collisionObject.GetComponent<PlatformController>();
-
-        /*if (borderController != null || platformController != null)
+        if (collisionObject.GetComponent<IGround>() != null)
         {
             isGrounded = true;
-        }*/
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision2D)
     {
         GameObject collisionObject = collision2D.gameObject;
 
-        BorderController borderController = collisionObject.GetComponent<BorderController>();
-        // PlatformController platformController = collisionObject.GetComponent<PlatformController>();
-        /*
-        if (borderController != null || platformController != null)
+        if (collisionObject.GetComponent<IGround>() != null)
         {
             isGrounded = false;
-        }*/
+        }
     }
 }

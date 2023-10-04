@@ -5,7 +5,7 @@ using UnityEngine;
 using Outscal.UnityFundamentals.Mat2.GenericClasses.Singleton;
 using Outscal.UnityFundamentals.Mat2.ScriptableObjects;
 using Outscal.UnityFundamentals.Mat2.Entities.Animal;
-using Outscal.UnityFundamentals.Mat2.Entities.Platform;
+using Outscal.UnityFundamentals.Mat2.Level.Platform;
 
 using Outscal.UnityFundamentals.Mat2.Events;
 using Outscal.UnityFundamentals.Mat2.Managers.Audio;
@@ -65,7 +65,10 @@ namespace Outscal.UnityFundamentals.Mat2.Managers
                 platformActivatedEvent.RemoveListener(ScoreUpdate);
         }
 
-        private void ScoreUpdate(AnimalController animalController) { calculateCompletionPercentage(); }
+        private void ScoreUpdate(AnimalController animalController) {
+            audioManager.Play("Death");
+            calculateCompletionPercentage(); 
+        }
         private void ScoreUpdate(PlatformController platformController)
         {
             audioManager.Play("Shoot");

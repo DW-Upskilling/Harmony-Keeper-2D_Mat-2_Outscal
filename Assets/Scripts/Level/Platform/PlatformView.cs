@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 using Outscal.UnityFundamentals.Mat2.GenericClasses.MVC;
 
-namespace Outscal.UnityFundamentals.Mat2.Entities.Platform
+namespace Outscal.UnityFundamentals.Mat2.Level.Platform
 {
     public class PlatformView : View<PlatformController>, IPlatform, IGround
     {

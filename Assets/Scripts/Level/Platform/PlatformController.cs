@@ -6,7 +6,7 @@ using Outscal.UnityFundamentals.Mat2.ScriptableObjects;
 using Outscal.UnityFundamentals.Mat2.Events;
 using Outscal.UnityFundamentals.Mat2.Entities.Player;
 
-namespace Outscal.UnityFundamentals.Mat2.Entities.Platform
+namespace Outscal.UnityFundamentals.Mat2.Level.Platform
 {
     public class PlatformController : Controller<PlatformModel, PlatformScriptableObject, PlatformView> 
     {
@@ -41,11 +41,11 @@ namespace Outscal.UnityFundamentals.Mat2.Entities.Platform
             }
         }
 
-        protected override PlatformModel CreateCharacterModel(PlatformScriptableObject platformScriptableObject)
+        protected override PlatformModel CreateModel(PlatformScriptableObject platformScriptableObject)
         {
             return new PlatformModel(platformScriptableObject);
         }
-        protected override PlatformView InstantiateCharacterView(PlatformScriptableObject platformScriptableObject)
+        protected override PlatformView InstantiateView(PlatformScriptableObject platformScriptableObject)
         {
             return null;
         }

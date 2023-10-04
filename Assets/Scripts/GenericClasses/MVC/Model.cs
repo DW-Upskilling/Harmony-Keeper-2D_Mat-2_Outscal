@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 namespace Outscal.UnityFundamentals.Mat2.GenericClasses.MVC
 {
-    
-
     public abstract class Model<S> where S:ScriptableObject
     {
         public S ScriptableObject { get; private set; }

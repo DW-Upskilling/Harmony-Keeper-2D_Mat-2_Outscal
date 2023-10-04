@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Outscal.UnityFundamentals.Mat2.Entities.Platform;
+using Outscal.UnityFundamentals.Mat2.Level.Platform;
 
 namespace Outscal.UnityFundamentals.Mat2.ScriptableObjects
 {

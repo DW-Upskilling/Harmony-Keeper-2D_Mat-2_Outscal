@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 using Outscal.UnityFundamentals.Mat2.GenericClasses.MVC;
 using Outscal.UnityFundamentals.Mat2.ScriptableObjects;
+using Outscal.UnityFundamentals.Mat2.Events;
+using Outscal.UnityFundamentals.Mat2.Entities.Player;
+using Outscal.UnityFundamentals.Mat2.Level;
 
 namespace Outscal.UnityFundamentals.Mat2.Entities.Animal
 {
@@ -17,7 +19,8 @@ namespace Outscal.UnityFundamentals.Mat2.Entities.Animal
         protected AnimalService service { get; set; }
 
         private RaycastHit2D raycastHit2D { get; set; }
-        private float cooldown;
+        private float sleep;
+        private float awake;
 
         public AnimalController(AnimalScriptableObject animalScriptableObject, AnimalService animalService) : base(animalScriptableObject)
         {
@@ -25,7 +28,8 @@ namespace Outscal.UnityFundamentals.Mat2.Entities.Animal
             view = service.gameObject.GetComponent<AnimalView>();
             view.Controller = this;
 
-            cooldown = 0f;
+            sleep = 0f;
+            awake = 0f;
         }
 
         internal void Start()
@@ -36,43 +40,55 @@ namespace Outscal.UnityFundamentals.Mat2.Entities.Animal
 
         internal void Update()
         {
-            cooldown -= Time.deltaTime;
+            if (!IsAlive)
+                return;
 
             if (IsGrounded > 0)
             {
                 patrol();
+            }
 
-                IsMoving = true;
-                cooldown = Random.Range(0f, model.ScriptableObject.CooldownSeconds);
+            awake -= Time.deltaTime;
+            if (awake > 0)
+                return;
+
+            sleep -= Time.deltaTime;
+
+            if (awake <= 0 && sleep > 0)
+            {
+                IsMoving = false;
             }
             else
             {
-                IsMoving = false;
+                IsMoving = true;
+                awake = Random.Range(0f, model.ScriptableObject.CooldownSeconds);
+                sleep = Random.Range(0f, model.ScriptableObject.CooldownSeconds);
             }
         }
 
         internal void OnCollisionEnter2D(Collision2D collision2D)
         {
             if (collision2D.gameObject.GetComponent<IGround>() != null) {
-                Debug.Log("Enter: " + view.gameObject.name);
                 IsGrounded += 1;
+            }
+            else if (collision2D.gameObject.GetComponent<IPlayer>() != null)
+            {
+                kill();
             }
         }
 
         internal void OnCollisionExit2D(Collision2D collision2D)
         {
-            if (collision2D.gameObject.GetComponent<IGround>() != null)
-            {
-                Debug.Log("Exit: " + view.gameObject.name);
+            if (collision2D.gameObject.GetComponent<IGround>() != null) {
                 IsGrounded -= 1;
             }
         }
 
-        protected override AnimalModel CreateCharacterModel(AnimalScriptableObject animalScriptableObject)
+        protected override AnimalModel CreateModel(AnimalScriptableObject animalScriptableObject)
         {
             return new AnimalModel(animalScriptableObject);
         }
-        protected override AnimalView InstantiateCharacterView(AnimalScriptableObject animalScriptableObject)
+        protected override AnimalView InstantiateView(AnimalScriptableObject animalScriptableObject)
         {
             return null;
         }
@@ -82,6 +98,16 @@ namespace Outscal.UnityFundamentals.Mat2.Entities.Animal
 
             if (!raycastHit2D.collider || raycastHit2D.collider.gameObject.GetComponent<IGround>() == null)
                 Direction = (Direction == Vector2.right) ? Vector2.left : Vector2.right;
+        }
+        
+        private void kill()
+        {
+            AnimalKillEventHandler.Instance.TriggerAnimalKillEvent(this);
+            
+            IsAlive = false;
+            GameObject.Destroy(view.rigidbody2d);
+            view.boxCollider2D.enabled = false;
+            view.PlayDead();
         }
     }
 }

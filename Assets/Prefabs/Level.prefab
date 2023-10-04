@@ -472,6 +472,8 @@ GameObject:
   - component: {fileID: 8023192953054280240}
   - component: {fileID: 4028497125304148986}
   - component: {fileID: 1722101456455988805}
+  - component: {fileID: 151424589493497256}
+  - component: {fileID: 3075847841577925338}
   m_Layer: 6
   m_Name: Border
   m_TagString: Untagged
@@ -602,9 +604,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 1478822306295709666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c459bfd60916e5f4ba7c30a2458ad48c, type: 3}
+  m_Script: {fileID: 11500000, guid: b1800d3393d74994c995b74601abfdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &151424589493497256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478822306295709666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479c64671dc82d14a83f98f3498e2a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!68 &3075847841577925338
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478822306295709666}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -20, y: 0}
+  - {x: 20, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1886717359868912277
 GameObject:
   m_ObjectHideFlags: 0

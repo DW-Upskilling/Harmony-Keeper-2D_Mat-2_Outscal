@@ -2,7 +2,7 @@
 
 using Outscal.UnityFundamentals.Mat2.ScriptableObjects;
 
-namespace Outscal.UnityFundamentals.Mat2.Entities.Platform
+namespace Outscal.UnityFundamentals.Mat2.Level.Platform
 {
     public class PlatformService : MonoBehaviour
     {
