@@ -15,6 +15,8 @@ namespace Outscal.UnityFundamentals.Mat2.Managers
         private int currentLevel = 0;
         public int CurrentLevel { set { currentLevel = value; } get { return currentLevel; } }
 
+        public int CompletionPercentage { get; private set; }
+
         private string levelKey;
 
         protected override void Initialize()
@@ -40,12 +42,18 @@ namespace Outscal.UnityFundamentals.Mat2.Managers
             // Unlock only if next level is not yet unlocked
             if (PlayerPrefs.GetInt(levelKey, 0) == 0)
                 PlayerPrefs.SetInt(levelKey, 1);
+
+            CompletionPercentage = completionPercentage;
         }
 
         internal void LevelReset() { }
 
-        internal void LoadScene(int sceneBuildIndex) {
+        public void LoadScene(int sceneBuildIndex) {
             SceneManager.LoadScene(sceneBuildIndex);
+        }
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
         }
 
     }

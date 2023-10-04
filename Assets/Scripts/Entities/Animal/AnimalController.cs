@@ -29,7 +29,7 @@ namespace Outscal.UnityFundamentals.Mat2.Entities.Animal
             view.Controller = this;
 
             sleep = 0f;
-            awake = 0f;
+            awake = 3f;
         }
 
         internal void Start()

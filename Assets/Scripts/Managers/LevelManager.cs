@@ -20,7 +20,7 @@ namespace Outscal.UnityFundamentals.Mat2.Managers
         public GameObject animals;
 
         [SerializeField]
-        private GoalController goal;
+        private PortalManager portalManager;
 
         private GameManager gameManager;
         private AudioManager audioManager;
@@ -65,6 +65,15 @@ namespace Outscal.UnityFundamentals.Mat2.Managers
                 platformActivatedEvent.RemoveListener(ScoreUpdate);
         }
 
+        internal void LevelComplete()
+        {
+            audioManager.Play("GameOver");
+            
+            gameManager.LevelComplete((int)completionPercentage);
+            
+            gameManager.LoadScene(1);
+        }
+
         private void ScoreUpdate(AnimalController animalController) {
             audioManager.Play("Death");
             calculateCompletionPercentage(); 
@@ -87,14 +96,16 @@ namespace Outscal.UnityFundamentals.Mat2.Managers
             platforms.GetComponentsInChildren<IPlatform>(true, results);
             float totalPlatforms = results.FindAll(e => e.CanActivate()).Count;
             float platformsActivated = platformActivatedEvent.platformsActivated;
-            platformsActivatedPercentage = totalPlatforms > 0 ? ((totalPlatforms - platformsActivated) / totalPlatforms) * 100 : 100;
+            platformsActivatedPercentage = totalPlatforms > 0 ? (platformsActivated / totalPlatforms) * 100 : 100;
 
             Debug.Log("Total: " + totalPlatforms + "\tActivated: " + platformsActivated);
 
             completionPercentage = (animalsSavedPercentage + platformsActivatedPercentage) / 2;
 
             if (platformsActivatedPercentage >= 100f)
-                goal.IsReady = true;
+            {
+                portalManager.OpenPortal();
+            }
         }
         
     }

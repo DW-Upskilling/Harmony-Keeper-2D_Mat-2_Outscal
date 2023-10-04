@@ -5,11 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+using Outscal.UnityFundamentals.Mat2.Managers;
+
 public class LevelCompleteSceneController : MonoBehaviour
 {
 
     public Button restartButton, nextButton, mainMenuButton;
     public TextMeshProUGUI heading, score;
+
+    private GameManager gameManager;
 
     void Awake()
     {
@@ -25,51 +29,41 @@ public class LevelCompleteSceneController : MonoBehaviour
             throw new System.Exception("mainMenuButton");
         mainMenuButton.onClick.AddListener(ExitToMainMenu);
 
+        gameManager = GameManager.Instance;
+
     }
 
     void Start()
     {
-        Singleton singleton = Singleton.Instance;
-        if (singleton != null)
-        {
-            singleton.CurrentLevelComplete();
 
-            if (singleton.CurrentLevel >= 6)
+            if (gameManager.CurrentLevel >= 6)
             {
                 nextButton.interactable = false;
             }
 
             if (heading != null)
             {
-                heading.text = $"Level {singleton.CurrentLevel} Complete";
+                heading.text = $"Level {gameManager.CurrentLevel} Complete";
             }
 
             if (score != null)
             {
-                score.text = $"Completed: {Mathf.Round(singleton.CompletionPercentage)}%";
+                score.text = $"Completed: {Mathf.Round(gameManager.CompletionPercentage)}%";
             }
 
-        }
     }
 
     void RestartLevel()
     {
-        Singleton singleton = Singleton.Instance;
-        if (singleton != null)
-        {
-            SceneManager.LoadScene("Level " + singleton.CurrentLevel);
-        }
-        else
-            SceneManager.LoadScene("MainMenu");
+        gameManager.LoadScene("Level " + gameManager.CurrentLevel);
     }
 
     void NextLevel()
     {
-        Singleton singleton = Singleton.Instance;
-        if (singleton != null && singleton.CurrentLevel < 6)
+        if ( gameManager.CurrentLevel < 6)
         {
-            singleton.CurrentLevel += 1;
-            SceneManager.LoadScene("Level " + singleton.CurrentLevel);
+            gameManager.CurrentLevel += 1;
+            SceneManager.LoadScene("Level " + gameManager.CurrentLevel);
         }
         else
             SceneManager.LoadScene("MainMenu");

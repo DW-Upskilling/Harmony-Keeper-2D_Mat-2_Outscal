@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platforms: {fileID: 5317588445715548441}
   animals: {fileID: 601371485940079935}
-  goal: {fileID: 3555144372498842662}
+  portalManager: {fileID: 3555144372498842662}
 --- !u!114 &1344884028581323773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,6 +1620,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 499197341668910383}
     m_Modifications:
+    - target: {fileID: 161005842325341503, guid: c08971460417ec54b82b1183721e065f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972833997997480841, guid: c08971460417ec54b82b1183721e065f, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2027092602829202587, guid: c08971460417ec54b82b1183721e065f, type: 3}
       propertyPath: m_RootOrder
       value: 5
