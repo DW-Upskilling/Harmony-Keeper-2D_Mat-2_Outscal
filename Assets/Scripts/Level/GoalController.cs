@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Outscal.UnityFundamentals.Mat2.Entities.Player;
 using Outscal.UnityFundamentals.Mat2.Managers.Audio;
 public class GoalController : MonoBehaviour
 {
@@ -42,9 +43,7 @@ public class GoalController : MonoBehaviour
         }
 
         // Check if the collider is the player
-        PlayerController playerController = collider.GetComponent<PlayerController>();
-
-        if (playerController != null)
+        if (collider.GetComponent<IPlayer>() != null)
         {
             // Get the LevelController component in the parent object
             LevelController levelController = gameObject.GetComponentInParent<LevelController>();
