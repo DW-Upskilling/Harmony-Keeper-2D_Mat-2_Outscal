@@ -1564,6 +1564,92 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036797105}
   m_Enabled: 1
+--- !u!1 &1103323446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103323447}
+  - component: {fileID: 1103323448}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103323447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103323446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103323448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103323446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fb086e69a688f439224891aa9340fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundsList:
+  - name: BackgroundMusic
+    clip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
+    volume: 0.25
+    pitch: 1
+    priority: 50
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 24d73765699ce3e46bb23cabc3a46494, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 51
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 2b6e306f144fd2047ad36490140f8b85, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 55
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 52
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 832aa39d4fbe053428a67083bb091a1a, type: 3}
+    volume: 0.45
+    pitch: 1
+    priority: 60
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  backgroundMusicName: BackgroundMusic
 --- !u!224 &1396093970 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7658745806053974590, guid: c57dab0c66d842b4899181b2fd01c10d, type: 3}
@@ -2096,10 +2182,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1721234779}
-  - component: {fileID: 1721234780}
-  - component: {fileID: 1721234781}
+  - component: {fileID: 1721234782}
   m_Layer: 0
-  m_Name: Singleton
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2113,14 +2198,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721234777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.659869, y: -0.580226, z: 108.99648}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1721234780
+--- !u!114 &1721234782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2129,61 +2214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1721234777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42fb086e69a688f439224891aa9340fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundsList:
-  - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
-    volume: 0.25
-    pitch: 1
-    priority: 50
-    loop: 1
-    mute: 0
-    source: {fileID: 0}
-  - name: Click
-    clip: {fileID: 8300000, guid: 24d73765699ce3e46bb23cabc3a46494, type: 3}
-    volume: 0.45
-    pitch: 1
-    priority: 51
-    loop: 0
-    mute: 0
-    source: {fileID: 0}
-  - name: Death
-    clip: {fileID: 8300000, guid: 2b6e306f144fd2047ad36490140f8b85, type: 3}
-    volume: 0.45
-    pitch: 1
-    priority: 55
-    loop: 0
-    mute: 0
-    source: {fileID: 0}
-  - name: Shoot
-    clip: {fileID: 8300000, guid: 26e19616f6ba9f6469e9d3d6c38b23fe, type: 3}
-    volume: 0.45
-    pitch: 1
-    priority: 52
-    loop: 0
-    mute: 0
-    source: {fileID: 0}
-  - name: GameOver
-    clip: {fileID: 8300000, guid: 832aa39d4fbe053428a67083bb091a1a, type: 3}
-    volume: 0.45
-    pitch: 1
-    priority: 60
-    loop: 0
-    mute: 0
-    source: {fileID: 0}
-  backgroundMusicName: BackgroundMusic
---- !u!114 &1721234781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721234777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad4e894f073975478343587c474ff03, type: 3}
+  m_Script: {fileID: 11500000, guid: aa63dfd3a1e91e34da63b1cdeeb8b60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1772249243

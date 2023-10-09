@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c465f00eac7742e4b8825ed12ca4c5c8, type: 3}
+  m_Name: VerticalPlatformScriptableObject
+  m_EditorClassIdentifier: 
+  platformType: 1
+  platformSize: 2
+  physicsMaterial2D: {fileID: 0}
+  initialSprite: {fileID: 21300000, guid: 6d86e7e8a8b8f4a4ea3a10d9dee509b0, type: 3}
+  activatedSprite: {fileID: 21300000, guid: 1f6dbf787d3d8e84381791aa30d9c292, type: 3}
+  canActivate: 1

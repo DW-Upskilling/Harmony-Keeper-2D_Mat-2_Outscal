@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using Outscal.UnityFundamentals.Mat2.Managers;
+
 public class MainMenuSceneController : MonoBehaviour
 {
 
@@ -14,15 +16,16 @@ public class MainMenuSceneController : MonoBehaviour
 
     private int InitialLaunch;
 
+    private GameManager gameManager;
+
     void Start()
     {
         if (IntialContainer == null)
             throw new System.Exception("intialIntialContainerText");
 
-        Singleton singleton = Singleton.Instance;
-        if (singleton == null)
-            return;
-        InitialLaunch = singleton.InitialLaunch;
+        gameManager = GameManager.Instance;
+
+        InitialLaunch = gameManager.InitialLaunch;
         ToggleContainers();
     }
 
@@ -37,9 +40,7 @@ public class MainMenuSceneController : MonoBehaviour
 
                 PlayerPrefs.SetInt("InitialLaunch", InitialLaunch);
 
-                Singleton singleton = Singleton.Instance;
-                if (singleton != null)
-                    singleton.InitialLaunch = InitialLaunch;
+                gameManager.InitialLaunch = InitialLaunch;
             }
             ToggleContainers();
         }
@@ -92,11 +93,8 @@ public class MainMenuSceneController : MonoBehaviour
 
     void LevelSceneLoader(string name)
     {
-        Singleton singleton = Singleton.Instance;
-        if (singleton != null)
-        {
-            singleton.CurrentLevel = int.Parse(name);
-        }
+
+        gameManager.CurrentLevel = int.Parse(name);
 
         SceneManager.LoadScene("Level " + name);
     }

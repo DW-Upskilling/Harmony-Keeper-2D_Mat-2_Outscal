@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8436102077145702286}
   - component: {fileID: 8436102077145702273}
-  - component: {fileID: 8436102077145702272}
   - component: {fileID: 8436102077145702275}
   - component: {fileID: 8436102077145702274}
   - component: {fileID: 8436102077145702277}
+  - component: {fileID: 7822671429635511594}
+  - component: {fileID: 6266052299959913819}
   m_Layer: 30
   m_Name: Cow
   m_TagString: Untagged
@@ -89,28 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8436102077145702272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8436102077145702276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4112f67db3021ea4eb0746e0fe37632b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  rayDistance: 0.1
-  intervalTime: 3
-  groundDetector: {fileID: 8436102078535571940}
-  groundLayerMasks:
-  - serializedVersion: 2
-    m_Bits: 64
-  - serializedVersion: 2
-    m_Bits: 128
-  finalSprite: {fileID: 21300016, guid: e2bde586482642d44a270276574c0129, type: 3}
 --- !u!61 &8436102077145702275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,6 +158,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7822671429635511594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8436102077145702276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c91e6ea88d6c96442ad9bf73cd04c259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalScriptableObject: {fileID: 11400000, guid: 7a5305ceb70ba6e4f91ffd65cfaca924, type: 2}
+--- !u!114 &6266052299959913819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8436102077145702276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ca49432fc9a5a46bd142d75495cd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundDetector: {fileID: 8436102078535571941}
 --- !u!1 &8436102078535571940
 GameObject:
   m_ObjectHideFlags: 0
